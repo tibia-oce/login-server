@@ -24,7 +24,7 @@ jobs:
     - name: Build and Release
       uses: wangyoucao577/go-release-action@v1.17
       with:
-        GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+        github_token: ${{ secrets.GHCR_TOKEN }}
         goos: ${{ matrix.goos }}
         goarch: ${{ matrix.goarch }}
         project_path: ./src/
