@@ -49,21 +49,21 @@ type details struct {
 func loadEventsSchedule(filePath string) (*events, error) {
 	xmlFile, err := os.Open(filePath)
 	if err != nil {
-		logger.Error(fmt.Errorf(err.Error()))
+		logger.Error(fmt.Errorf(err.Error())) //nolint:govet
 		return nil, err
 	}
 	defer xmlFile.Close()
 
 	byteValue, err := io.ReadAll(xmlFile)
 	if err != nil {
-		logger.Error(fmt.Errorf(err.Error()))
+		logger.Error(fmt.Errorf(err.Error())) //nolint:govet
 		return nil, err
 	}
 
 	var events events
 	err = xml.Unmarshal(byteValue, &events)
 	if err != nil {
-		logger.Error(fmt.Errorf(err.Error()))
+		logger.Error(fmt.Errorf(err.Error())) //nolint:govet
 		return nil, err
 	}
 
