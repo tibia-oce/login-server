@@ -14,4 +14,3 @@ FROM alpine:latest
 COPY --from=builder /bin/login-server /bin/login-server
 
 ENTRYPOINT ["/bin/login-server"]
-

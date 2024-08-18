@@ -49,9 +49,20 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GHCR_TOKEN }}
+        password: ${{ secrets.TOKEN }}
+
+    - name: Build
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: docker/build-push-action@v3
+      with:
+        file: docker/Dockerfile
+        tags: ghcr.io/${{ github.repository }}:${{ steps.gitversion.outputs.semVer }}
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new
 
     - name: Build and push
+      id: docker_build
+      if: ${{ github.event_name == 'push' }}
       uses: docker/build-push-action@v3
       with:
         file: docker/Dockerfile
