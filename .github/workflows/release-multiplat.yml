@@ -1,4 +1,3 @@
----
 name: Release - Linux
 
 on:
@@ -15,17 +14,17 @@ jobs:
         goos: [linux, windows, darwin]
         goarch: ["386", amd64]
         exclude:
-          - goarch: "386"
-            goos: darwin
+        - goarch: "386"
+          goos: darwin
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Build and Release
-        uses: wangyoucao577/go-release-action@v1.17
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          goos: ${{ matrix.goos }}
-          goarch: ${{ matrix.goarch }}
-          project_path: ./src/
+    - name: Build and Release
+      uses: wangyoucao577/go-release-action@v1.17
+      with:
+        GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+        goos: ${{ matrix.goos }}
+        goarch: ${{ matrix.goarch }}
+        project_path: ./src/
