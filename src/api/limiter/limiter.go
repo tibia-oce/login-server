@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/opentibiabr/login-server/src/configs"
+	"github.com/tibia-oce/login-server/src/configs"
 
 	"golang.org/x/time/rate"
 )

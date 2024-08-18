@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
-	"github.com/opentibiabr/login-server/src/server"
 	"github.com/stretchr/testify/assert"
+	"github.com/tibia-oce/login-server/src/server"
 	"google.golang.org/grpc"
 )
 

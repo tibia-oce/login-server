@@ -1,6 +1,6 @@
 package models
 
-import "github.com/opentibiabr/login-server/src/grpc/login_proto_messages"
+import "github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
 
 type Session struct {
 	EmailCodeRequest              bool   `json:"emailcoderequest"`

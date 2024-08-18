@@ -10,7 +10,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/opentibiabr/login-server/src/logger"
+	"github.com/tibia-oce/login-server/src/logger"
 )
 
 func loadBoostedCreatureData(db *sql.DB) (uint32, uint32, error) {

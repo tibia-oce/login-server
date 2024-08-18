@@ -5,11 +5,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/opentibiabr/login-server/src/api"
-	"github.com/opentibiabr/login-server/src/configs"
-	grpc_login_server "github.com/opentibiabr/login-server/src/grpc"
-	"github.com/opentibiabr/login-server/src/logger"
-	"github.com/opentibiabr/login-server/src/server"
+	"github.com/tibia-oce/login-server/src/api"
+	"github.com/tibia-oce/login-server/src/configs"
+	grpc_login_server "github.com/tibia-oce/login-server/src/grpc"
+	"github.com/tibia-oce/login-server/src/logger"
+	"github.com/tibia-oce/login-server/src/server"
 )
 
 var numberOfServers = 2
@@ -18,15 +18,9 @@ var initDelay = 200
 func main() {
 	logger.Init(configs.GetLogLevel())
 	logger.Info("Welcome to OTBR Login Server")
-	logger.Info("Loading configurations...")
 
 	var wg sync.WaitGroup
 	wg.Add(numberOfServers)
-
-	err := configs.Init()
-	if err != nil {
-		logger.Debug("Failed to load '.env' in dev environment, going with default.")
-	}
 
 	gConfigs := configs.GetGlobalConfigs()
 

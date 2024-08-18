@@ -7,12 +7,23 @@ import (
 	"golang.org/x/time/rate"
 )
 
-const EnvLoginIpKey = "LOGIN_IP"
-const EnvLoginHttpPortKey = "LOGIN_HTTP_PORT"
-const EnvLoginGrpcPortKey = "LOGIN_GRPC_PORT"
+const (
+	// Environment variable keys
+	EnvLoginIpKey          = "LOGIN_IP"
+	EnvLoginHttpPortKey    = "LOGIN_HTTP_PORT"
+	EnvLoginGrpcPortKey    = "LOGIN_GRPC_PORT"
+	EnvRateLimiterBurstKey = "RATE_LIMITER_BURST"
+	EnvRateLimiterRateKey  = "RATE_LIMITER_RATE"
+	EnvLogLevel            = "ENV_LOG_LEVEL"
 
-const EnvRateLimiterBurstKey = "RATE_LIMITER_BURST"
-const EnvRateLimiterRateKey = "RATE_LIMITER_RATE"
+	// Default values
+	DefaultLoginIpKey          = "127.0.0.1"
+	DefaultLoginHttpPortKey    = 80
+	DefaultLoginGrpcPortKey    = 9090
+	DefaultRateLimiterBurstKey = 5
+	DefaultRateLimiterRateKey  = 2
+	DefaultLogLevel            = "ENV_LOG_LEVEL"
+)
 
 type LoginServerConfigs struct {
 	Http        HttpLoginConfigs
@@ -64,8 +75,8 @@ func (httpLoginConfigs *HttpLoginConfigs) Format() string {
 }
 func getHttpLoginConfigs() HttpLoginConfigs {
 	return HttpLoginConfigs{
-		Ip:   GetEnvStr(EnvLoginIpKey, ""),
-		Port: GetEnvInt(EnvLoginHttpPortKey, 80),
+		Ip:   getEnv(EnvLoginIpKey, DefaultLoginIpKey),
+		Port: getEnvInt(EnvLoginHttpPortKey, DefaultLoginHttpPortKey),
 	}
 }
 
@@ -78,8 +89,8 @@ func (grpcLoginConfigs *GrpcLoginConfigs) Format() string {
 }
 func getGrpcLoginConfigs() GrpcLoginConfigs {
 	return GrpcLoginConfigs{
-		Ip:   GetEnvStr(EnvLoginIpKey, ""),
-		Port: GetEnvInt(EnvLoginGrpcPortKey, 9090),
+		Ip:   getEnv(EnvLoginIpKey, DefaultLoginIpKey),
+		Port: getEnvInt(EnvLoginGrpcPortKey, DefaultLoginGrpcPortKey),
 	}
 }
 
@@ -92,15 +103,13 @@ func (rateLimiterConfigs *RateLimiter) Format() string {
 }
 func GetRateLimiterConfigs() RateLimiter {
 	return RateLimiter{
-		Burst: GetEnvInt(EnvRateLimiterBurstKey, 5),
-		Rate:  rate.Limit(GetEnvInt(EnvRateLimiterRateKey, 2)),
+		Burst: getEnvInt(EnvRateLimiterBurstKey, DefaultRateLimiterBurstKey),
+		Rate:  rate.Limit(getEnvInt(EnvRateLimiterRateKey, DefaultRateLimiterRateKey)),
 	}
 }
 
-const EnvLogLevel = "ENV_LOG_LEVEL"
-
 func GetLogLevel() logrus.Level {
 	defaultLevel, _ := logrus.Level.MarshalText(logrus.InfoLevel)
-	level, _ := logrus.ParseLevel(GetEnvStr(EnvLogLevel, string(defaultLevel)))
+	level, _ := logrus.ParseLevel(getEnv(EnvLogLevel, string(defaultLevel)))
 	return level
 }

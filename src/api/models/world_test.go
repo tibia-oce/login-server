@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/opentibiabr/login-server/src/configs"
-	"github.com/opentibiabr/login-server/src/grpc/login_proto_messages"
+	"github.com/tibia-oce/login-server/src/configs"
+	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
 )
 
 func TestPlayground(t *testing.T) {

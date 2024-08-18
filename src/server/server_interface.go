@@ -1,6 +1,6 @@
 package server
 
-import "github.com/opentibiabr/login-server/src/configs"
+import "github.com/tibia-oce/login-server/src/configs"
 
 type ServerInterface interface {
 	Run(globalConfigs configs.GlobalConfigs) error

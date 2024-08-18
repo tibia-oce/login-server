@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/opentibiabr/login-server/src/logger"
+	"github.com/tibia-oce/login-server/src/logger"
 )
 
 type events struct {
@@ -49,21 +49,21 @@ type details struct {
 func loadEventsSchedule(filePath string) (*events, error) {
 	xmlFile, err := os.Open(filePath)
 	if err != nil {
-		logger.Error(fmt.Errorf(err.Error()))
+		logger.Error(fmt.Errorf(err.Error())) //nolint
 		return nil, err
 	}
 	defer xmlFile.Close()
 
 	byteValue, err := io.ReadAll(xmlFile)
 	if err != nil {
-		logger.Error(fmt.Errorf(err.Error()))
+		logger.Error(fmt.Errorf(err.Error())) //nolint
 		return nil, err
 	}
 
 	var events events
 	err = xml.Unmarshal(byteValue, &events)
 	if err != nil {
-		logger.Error(fmt.Errorf(err.Error()))
+		logger.Error(fmt.Errorf(err.Error())) //nolint
 		return nil, err
 	}
 
@@ -81,7 +81,7 @@ func parseDateString(dateStr string) int {
 			return int(t.Unix())
 		}
 	}
-	logger.Error(fmt.Errorf(err.Error()))
+	logger.Error(fmt.Errorf(err.Error())) //nolint
 	return 0
 }
 

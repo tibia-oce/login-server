@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/opentibiabr/login-server/src/grpc/login_proto_messages"
+	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
 )
 
 func TestLoadCharactersFromMessage(t *testing.T) {
