@@ -5,9 +5,9 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/opentibiabr/login-server/src/api/models"
-	"github.com/opentibiabr/login-server/src/database"
-	"github.com/opentibiabr/login-server/src/grpc/login_proto_messages"
+	"github.com/tibia-oce/login-server/src/api/models"
+	"github.com/tibia-oce/login-server/src/database"
+	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
 )
 
 func (_api *Api) login(c *gin.Context) {

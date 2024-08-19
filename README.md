@@ -1,12 +1,12 @@
 # OpenTibiaBR - Login Server
 
-[![Version](https://img.shields.io/github/v/release/opentibiabr/login-server)](https://github.com/opentibiabr/login-server/releases/latest)
+[![Version](https://img.shields.io/github/v/release/opentibiabr/login-server)](https://github.com/tibia-oce/login-server/releases/latest)
 [![Go](https://img.shields.io/github/go-mod/go-version/opentibiabr/login-server)](https://golang.org/doc/go1.16)
 ![GitHub repo size](https://img.shields.io/github/repo-size/opentibiabr/login-server)
 
 [![Discord Channel](https://img.shields.io/discord/528117503952551936.svg?style=flat-square&logo=discord)](https://discord.gg/3NxYnyV)
-[![GitHub pull request](https://img.shields.io/github/issues-pr/opentibiabr/login-server)](https://github.com/opentibiabr/login-server/pulls)
-[![GitHub issues](https://img.shields.io/github/issues/opentibiabr/login-server)](https://github.com/opentibiabr/login-server/issues)
+[![GitHub pull request](https://img.shields.io/github/issues-pr/opentibiabr/login-server)](https://github.com/tibia-oce/login-server/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/opentibiabr/login-server)](https://github.com/tibia-oce/login-server/issues)
 
 
 ## Project
@@ -21,11 +21,11 @@ Every release is available with multi-platform applications for download.
 ## Builds
 | Platform       | Build        |
 | :------------- | :----------: |
-| MacOS          | [![MacOS Build](https://github.com/opentibiabr/login-server/actions/workflows/ci-build-macos.yml/badge.svg?branch=main)](https://github.com/opentibiabr/login-server/actions/workflows/ci-build-macos.yml)   |
-| Ubuntu         | [![Ubuntu Build](https://github.com/opentibiabr/login-server/actions/workflows/ci-build-ubuntu.yml/badge.svg?branch=main)](https://github.com/opentibiabr/login-server/actions/workflows/ci-build-ubuntu.yml) |
-| Windows        | [![Windows Build](https://github.com/opentibiabr/login-server/actions/workflows/ci-build-windows.yml/badge.svg?branch=main)](https://github.com/opentibiabr/login-server/actions/workflows/ci-build-windows.yml) |
+| MacOS          | [![MacOS Build](https://github.com/tibia-oce/login-server/actions/workflows/ci-build-macos.yml/badge.svg?branch=main)](https://github.com/tibia-oce/login-server/actions/workflows/ci-build-macos.yml)   |
+| Ubuntu         | [![Ubuntu Build](https://github.com/tibia-oce/login-server/actions/workflows/ci-build-ubuntu.yml/badge.svg?branch=main)](https://github.com/tibia-oce/login-server/actions/workflows/ci-build-ubuntu.yml) |
+| Windows        | [![Windows Build](https://github.com/tibia-oce/login-server/actions/workflows/ci-build-windows.yml/badge.svg?branch=main)](https://github.com/tibia-oce/login-server/actions/workflows/ci-build-windows.yml) |
 
-[![Workflow](https://github.com/opentibiabr/login-server/actions/workflows/ci-multiplat-release.yml/badge.svg)](https://github.com/opentibiabr/login-server/actions/workflows/ci-multiplat-release.yml)
+[![Workflow](https://github.com/tibia-oce/login-server/actions/workflows/ci-multiplat-release.yml/badge.svg)](https://github.com/tibia-oce/login-server/actions/workflows/ci-multiplat-release.yml)
 
 ### Getting **Started**
 
@@ -92,7 +92,7 @@ In the gRPC server we got a 10x performance boost, compared to the HTTP benchmar
 
 ## Issues
 
-We use the [issue tracker on GitHub](https://github.com/opentibiabr/login-server/issues). Everyone who is watching the repository gets notified by e-mail when there is an activity, so be mindful about comments that add no value (e.g. "+1"). 
+We use the [issue tracker on GitHub](https://github.com/tibia-oce/login-server/issues). Everyone who is watching the repository gets notified by e-mail when there is an activity, so be mindful about comments that add no value (e.g. "+1"). 
 
 We are willing to improve the login server with more features, so feel free to create issues with features requests and ideas, only bug fixes.
 
@@ -100,7 +100,7 @@ If you'd need an issue/feature to be prioritized, you should either do it yourse
 
 ## Pull requests
 
-Before [creating a pull request](https://github.com/opentibiabr/login-server/pulls) please keep in mind:
+Before [creating a pull request](https://github.com/tibia-oce/login-server/pulls) please keep in mind:
 
 * Set one single scope in your pull request. Focus help us review and things to ship faster. Too many things on the same Pull Request make it harder to review, harder to test and hard to move on.
 * Add tests. Pull Requests without tests **won't** be approved.

@@ -5,11 +5,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/opentibiabr/login-server/src/api"
-	"github.com/opentibiabr/login-server/src/configs"
-	grpc_login_server "github.com/opentibiabr/login-server/src/grpc"
-	"github.com/opentibiabr/login-server/src/logger"
-	"github.com/opentibiabr/login-server/src/server"
+	"github.com/tibia-oce/login-server/src/api"
+	"github.com/tibia-oce/login-server/src/configs"
+	grpc_login_server "github.com/tibia-oce/login-server/src/grpc"
+	"github.com/tibia-oce/login-server/src/logger"
+	"github.com/tibia-oce/login-server/src/server"
 )
 
 var numberOfServers = 2

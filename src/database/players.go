@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/opentibiabr/login-server/src/configs"
-	"github.com/opentibiabr/login-server/src/grpc/login_proto_messages"
+	"github.com/tibia-oce/login-server/src/configs"
+	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
 )
 
 func LoadPlayers(db *sql.DB, acc *Account) ([]*login_proto_messages.Character, error) {

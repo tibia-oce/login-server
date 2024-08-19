@@ -9,11 +9,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/opentibiabr/login-server/src/api/limiter"
-	"github.com/opentibiabr/login-server/src/configs"
-	"github.com/opentibiabr/login-server/src/database"
-	"github.com/opentibiabr/login-server/src/logger"
-	"github.com/opentibiabr/login-server/src/server"
+	"github.com/tibia-oce/login-server/src/api/limiter"
+	"github.com/tibia-oce/login-server/src/configs"
+	"github.com/tibia-oce/login-server/src/database"
+	"github.com/tibia-oce/login-server/src/logger"
+	"github.com/tibia-oce/login-server/src/server"
 	"google.golang.org/grpc"
 )
 

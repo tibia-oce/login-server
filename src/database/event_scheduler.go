@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/opentibiabr/login-server/src/logger"
+	"github.com/tibia-oce/login-server/src/logger"
 )
 
 type events struct {

@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"bou.ke/monkey"
-	"github.com/opentibiabr/login-server/src/grpc/login_proto_messages"
 	"github.com/stretchr/testify/assert"
+	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
 )
 
 func TestAccount_GetGrpcSession(t *testing.T) {

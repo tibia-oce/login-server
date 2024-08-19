@@ -8,8 +8,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/opentibiabr/login-server/src/grpc/login_proto_messages"
-	"github.com/opentibiabr/login-server/src/logger"
+	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
+	"github.com/tibia-oce/login-server/src/logger"
 )
 
 type Account struct {

@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/joho/godotenv"
-	"github.com/opentibiabr/login-server/src/logger"
+	"github.com/tibia-oce/login-server/src/logger"
 )
 
 type Config interface {
