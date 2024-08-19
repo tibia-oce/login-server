@@ -1,4 +1,4 @@
-module github.com/opentibiabr/login-server
+module github.com/tibia-oce/login-server
 
 go 1.16
 

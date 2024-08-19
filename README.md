@@ -1,17 +1,17 @@
 # OpenTibiaBR - Login Server
 
-[![Version](https://img.shields.io/github/v/release/opentibiabr/login-server)](https://github.com/tibia-oce/login-server/releases/latest)
-[![Go](https://img.shields.io/github/go-mod/go-version/opentibiabr/login-server)](https://golang.org/doc/go1.16)
-![GitHub repo size](https://img.shields.io/github/repo-size/opentibiabr/login-server)
+[![Version](https://img.shields.io/github/v/release/tibia-oce/login-server)](https://github.com/tibia-oce/login-server/releases/latest)
+[![Go](https://img.shields.io/github/go-mod/go-version/tibia-oce/login-server)](https://golang.org/doc/go1.16)
+![GitHub repo size](https://img.shields.io/github/repo-size/tibia-oce/login-server)
 
 [![Discord Channel](https://img.shields.io/discord/528117503952551936.svg?style=flat-square&logo=discord)](https://discord.gg/3NxYnyV)
-[![GitHub pull request](https://img.shields.io/github/issues-pr/opentibiabr/login-server)](https://github.com/tibia-oce/login-server/pulls)
-[![GitHub issues](https://img.shields.io/github/issues/opentibiabr/login-server)](https://github.com/tibia-oce/login-server/issues)
+[![GitHub pull request](https://img.shields.io/github/issues-pr/tibia-oce/login-server)](https://github.com/tibia-oce/login-server/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/tibia-oce/login-server)](https://github.com/tibia-oce/login-server/issues)
 
 
 ## Project
 
-OpenTibiaBR - Login Server is a free open source login server developed in golang to enable cipclient and [otclient](https://github.com/opentibiabr/otclient) to connect and login to [canary server](https://github.com/opentibiabr/canary).
+OpenTibiaBR - Login Server is a free open source login server developed in golang to enable cipclient and [otclient](https://github.com/tibia-oce/otclient) to connect and login to [canary server](https://github.com/tibia-oce/canary).
 
 Current version supports only http login, through `/login` or `/login.php` routes.
 
@@ -62,11 +62,11 @@ You can also download our docker image and apply the environment variables to yo
 `RUN go build -o TARGET_NAME ./src/`
 
 ## Docker
-`docker pull opentibiabr/login-server:latest`<br><br>
-[![Automation](https://img.shields.io/docker/cloud/automated/opentibiabr/login-server)](https://hub.docker.com/r/opentibiabr/login-server)
-[![Image Size](https://img.shields.io/docker/image-size/opentibiabr/login-server)](https://hub.docker.com/r/opentibiabr/login-server/tags?page=1&ordering=last_updated)
-![Pulls](https://img.shields.io/docker/pulls/opentibiabr/login-server)
-[![Build](https://img.shields.io/docker/cloud/build/opentibiabr/login-server)](https://hub.docker.com/r/opentibiabr/login-server/builds)
+`docker pull tibia-oce/login-server:latest`<br><br>
+[![Automation](https://img.shields.io/docker/cloud/automated/tibia-oce/login-server)](https://hub.docker.com/r/tibia-oce/login-server)
+[![Image Size](https://img.shields.io/docker/image-size/tibia-oce/login-server)](https://hub.docker.com/r/tibia-oce/login-server/tags?page=1&ordering=last_updated)
+![Pulls](https://img.shields.io/docker/pulls/tibia-oce/login-server)
+[![Build](https://img.shields.io/docker/cloud/build/tibia-oce/login-server)](https://hub.docker.com/r/tibia-oce/login-server/builds)
 
 ## Benchmark
 There are a few known login versions available. The most common ones are a python login and login.php, from different websites versions.
