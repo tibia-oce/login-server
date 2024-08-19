@@ -44,11 +44,13 @@ func Initialize(gConfigs configs.GlobalConfigs) *Api {
 
 	gin.SetMode(gin.ReleaseMode)
 
+	// TODO: Relys on being relative to the server files... Will need to build this later
+	// with a decoupled approach (key vault or a github repo?)
 	_api.Router = gin.New()
 	_api.Router.Use(logger.LogRequest())
 	_api.Router.Use(gin.Recovery())
 	_api.Router.Use(ipLimiter.Limit())
-	_api.ServerPath = configs.GetEnvStr("SERVER_PATH", "") + "/"
+	_api.ServerPath = configs.GetEnvStr("SERVER_PATH", "server") + "/"
 	configPath := _api.ServerPath + "config.lua"
 	_api.LuaConfigManager, err = configs.NewLuaConfigManager(configPath)
 	if err != nil {

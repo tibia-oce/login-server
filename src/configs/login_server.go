@@ -64,7 +64,7 @@ func (httpLoginConfigs *HttpLoginConfigs) Format() string {
 }
 func getHttpLoginConfigs() HttpLoginConfigs {
 	return HttpLoginConfigs{
-		Ip:   GetEnvStr(EnvLoginIpKey, ""),
+		Ip:   GetEnvStr(EnvLoginIpKey, "127.0.0.1"),
 		Port: GetEnvInt(EnvLoginHttpPortKey, 80),
 	}
 }
@@ -78,7 +78,7 @@ func (grpcLoginConfigs *GrpcLoginConfigs) Format() string {
 }
 func getGrpcLoginConfigs() GrpcLoginConfigs {
 	return GrpcLoginConfigs{
-		Ip:   GetEnvStr(EnvLoginIpKey, ""),
+		Ip:   GetEnvStr(EnvLoginIpKey, "127.0.0.1"),
 		Port: GetEnvInt(EnvLoginGrpcPortKey, 9090),
 	}
 }

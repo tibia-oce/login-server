@@ -40,7 +40,7 @@ func (dbConfigs *DBConfigs) format() string {
 }
 func GetDBConfigs() DBConfigs {
 	return DBConfigs{
-		Host: GetEnvStr(EnvDBHostKey, "127.0.0.1"),
+		Host: GetEnvStr(EnvDBHostKey, "database"),
 		Port: GetEnvInt(EnvDBPortKey, 3306),
 		Name: GetEnvStr(EnvDBNameKey, "canary"),
 		User: GetEnvStr(EnvDBUserKey, "canary"),
