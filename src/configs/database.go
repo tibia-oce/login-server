@@ -2,13 +2,25 @@ package configs
 
 import (
 	"fmt"
+
+	_ "github.com/joho/godotenv/autoload"
 )
 
-const EnvDBHostKey = "MYSQL_HOST"
-const EnvDBNameKey = "MYSQL_DBNAME"
-const EnvDBPassKey = "MYSQL_PASS"
-const EnvDBPortKey = "MYSQL_PORT"
-const EnvDBUserKey = "MYSQL_USER"
+const (
+	// Environment variable keys
+	EnvDBHostKey = "MYSQL_HOST"
+	EnvDBPortKey = "MYSQL_PORT"
+	EnvDBUserKey = "MYSQL_USER"
+	EnvDBPassKey = "MYSQL_PASS"
+	EnvDBNameKey = "MYSQL_DBNAME"
+
+	// Default values
+	DefaultDBHost = "database"
+	DefaultDBPort = 3306
+	DefaultDBUser = "canary"
+	DefaultDBPass = "canary"
+	DefaultDBName = "canary"
+)
 
 type DBConfigs struct {
 	Host string
@@ -16,9 +28,29 @@ type DBConfigs struct {
 	Name string
 	User string
 	Pass string
-	Config
 }
 
+func GetDBConfigs() DBConfigs {
+	return DBConfigs{
+		Host: getEnv(EnvDBHostKey, DefaultDBHost),
+		Port: getEnvInt(EnvDBPortKey, DefaultDBPort),
+		User: getEnv(EnvDBUserKey, DefaultDBUser),
+		Pass: getEnv(EnvDBPassKey, DefaultDBPass),
+		Name: getEnv(EnvDBNameKey, DefaultDBName),
+	}
+}
+
+// Format returns a string representation of the DBConfigs
+func (dbConfigs *DBConfigs) Format() string {
+	return fmt.Sprintf(
+		"Database: %s:%d/%s",
+		dbConfigs.Host,
+		dbConfigs.Port,
+		dbConfigs.Name,
+	)
+}
+
+// GetConnectionString returns the database connection string
 func (dbConfigs *DBConfigs) GetConnectionString() string {
 	return fmt.Sprintf(
 		"%s:%s@tcp(%s:%d)/%s?parseTime=true",
@@ -37,13 +69,4 @@ func (dbConfigs *DBConfigs) format() string {
 		dbConfigs.Port,
 		dbConfigs.Name,
 	)
-}
-func GetDBConfigs() DBConfigs {
-	return DBConfigs{
-		Host: GetEnvStr(EnvDBHostKey, "database"),
-		Port: GetEnvInt(EnvDBPortKey, 3306),
-		Name: GetEnvStr(EnvDBNameKey, "canary"),
-		User: GetEnvStr(EnvDBUserKey, "canary"),
-		Pass: GetEnvStr(EnvDBPassKey, "canary"),
-	}
 }
