@@ -1,7 +1,7 @@
+package configs
+
 // TODO
 // Needs to be refactored to match config.getEnv and config.getEnvInt
-
-// package configs
 
 // import (
 // 	"fmt"
