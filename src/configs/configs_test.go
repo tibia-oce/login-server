@@ -117,7 +117,7 @@ func TestGetEnvInt(t *testing.T) {
 				err := os.Setenv(tt.args.key, fmt.Sprintf("%d", tt.envKey))
 				assert.Nil(t, err)
 			}
-			got := GetEnvInt(tt.args.key, tt.args.defaultValue...)
+			got := getEnvInt(tt.args.key, tt.args.defaultValue...)
 			assert.Equal(t, got, tt.want)
 			if tt.envKey != 0 {
 				err := os.Unsetenv(tt.args.key)
@@ -127,7 +127,7 @@ func TestGetEnvInt(t *testing.T) {
 	}
 }
 
-func TestGetEnvStr(t *testing.T) {
+func TestgetEnvStr(t *testing.T) {
 	type args struct {
 		key          string
 		defaultValue []string
@@ -162,7 +162,7 @@ func TestGetEnvStr(t *testing.T) {
 				err := os.Setenv(tt.args.key, tt.envKey)
 				assert.Nil(t, err)
 			}
-			got := GetEnvStr(tt.args.key, tt.args.defaultValue...)
+			got := getEnvStr(tt.args.key, tt.args.defaultValue...)
 			assert.Equal(t, got, tt.want)
 			if tt.envKey != "" {
 				err := os.Unsetenv(tt.args.key)
