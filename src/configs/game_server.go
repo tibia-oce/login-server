@@ -3,12 +3,25 @@ package configs
 import (
 	"fmt"
 	"strings"
+
+	_ "github.com/joho/godotenv/autoload"
 )
 
-const EnvServerIpKey = "SERVER_IP"
-const EnvServerLocationKey = "SERVER_LOCATION"
-const EnvServerNameKey = "SERVER_NAME"
-const EnvServerPortKey = "SERVER_PORT"
+const (
+	// Environment variable keys
+	EnvServerIpKey       = "SERVER_IP"
+	EnvServerLocationKey = "SERVER_LOCATION"
+	EnvServerNameKey     = "SERVER_NAME"
+	EnvServerPortKey     = "SERVER_PORT"
+	EnvVocations         = "VOCATIONS"
+
+	// Default values
+	DefaultServerIpKey       = "127.0.0.1"
+	DefaultServerLocationKey = "BRA"
+	DefaultServerNameKey     = "Canary"
+	DefaultServerPortKey     = 7172
+	DefaultVocations         = ""
+)
 
 type GameServerConfigs struct {
 	Port     int
@@ -29,18 +42,16 @@ func (gameServerConfigs *GameServerConfigs) Format() string {
 }
 func GetGameServerConfigs() GameServerConfigs {
 	return GameServerConfigs{
-		IP:       GetEnvStr(EnvServerIpKey, "127.0.0.1"),
-		Name:     GetEnvStr(EnvServerNameKey, "Canary"),
-		Port:     GetEnvInt(EnvServerPortKey, 7172),
-		Location: GetEnvStr(EnvServerLocationKey, "BRA"),
+		IP:       getEnv(EnvServerIpKey, DefaultServerIpKey),
+		Name:     getEnv(EnvServerNameKey, DefaultServerNameKey),
+		Port:     getEnvInt(EnvServerPortKey, DefaultServerPortKey),
+		Location: getEnv(EnvServerLocationKey, DefaultServerLocationKey),
 	}
 }
 
-const EnvVocations = "VOCATIONS"
-
 func GetServerVocations() []string {
-	vocationsStr := GetEnvStr(EnvVocations, "")
-	vocations := strings.Split(vocationsStr, ",")
+	vocationsStr := getEnv(EnvVocations, DefaultVocations)
+	vocations := strings.Split(vocationsStr, DefaultVocations)
 
 	if len(vocationsStr) == 0 || len(vocations) == 0 {
 		return []string{

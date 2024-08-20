@@ -13,7 +13,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - 'db-volume:/var/lib/mysql'
+      - 'canary:/var/lib/mysql'
       - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD", "healthcheck.sh"]
@@ -30,9 +30,6 @@ services:
       - '../.env'
     networks:
       - canary-net
-    ports:
-      - '$gameProtocolPort:$gameProtocolPort'
-      - '$statusProtocolPort:$statusProtocolPort'
     depends_on:
       - database
 
@@ -44,9 +41,6 @@ services:
     restart: unless-stopped
     networks:
       - canary-net
-    ports:
-      - '$LOGIN_HTTP_PORT:$LOGIN_HTTP_PORT'
-      - '$LOGIN_GRPC_PORT:$LOGIN_GRPC_PORT'
     depends_on:
       - database
     env_file:
@@ -66,7 +60,7 @@ services:
       - database
 
 volumes:
-  db-volume:
+  canary:
 
 networks:
   canary-net:

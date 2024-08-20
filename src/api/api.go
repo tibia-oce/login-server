@@ -3,7 +3,6 @@ package api
 import (
 	"database/sql"
 	"errors"
-	"fmt"
 	"net/http"
 	"sync"
 
@@ -26,7 +25,6 @@ type Api struct {
 	BoostedBossID     uint32
 	ServerPath        string
 	CorePath          string
-	LuaConfigManager  *configs.LuaConfigManager
 }
 
 func Initialize(gConfigs configs.GlobalConfigs) *Api {
@@ -50,13 +48,7 @@ func Initialize(gConfigs configs.GlobalConfigs) *Api {
 	_api.Router.Use(logger.LogRequest())
 	_api.Router.Use(gin.Recovery())
 	_api.Router.Use(ipLimiter.Limit())
-	_api.ServerPath = configs.GetEnvStr("SERVER_PATH", "server") + "/"
-	configPath := _api.ServerPath + "config.lua"
-	_api.LuaConfigManager, err = configs.NewLuaConfigManager(configPath)
-	if err != nil {
-		logger.Error(fmt.Errorf("error to load Lua configurations: %v", err))
-	}
-	_api.CorePath = _api.ServerPath + _api.LuaConfigManager.GetString("coreDirectory") + "/"
+	_api.CorePath = "/"
 
 	_api.initializeRoutes()
 
