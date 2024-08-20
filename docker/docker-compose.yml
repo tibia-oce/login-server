@@ -43,6 +43,10 @@ services:
       - canary-net
     depends_on:
       - database
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "9090:9090"
     env_file:
       - '../.env'
 

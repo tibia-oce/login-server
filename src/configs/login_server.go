@@ -2,6 +2,7 @@ package configs
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/sirupsen/logrus"
 	"golang.org/x/time/rate"
@@ -22,7 +23,6 @@ const (
 	DefaultLoginGrpcPortKey    = 9090
 	DefaultRateLimiterBurstKey = 5
 	DefaultRateLimiterRateKey  = 2
-	DefaultLogLevel            = "ENV_LOG_LEVEL"
 )
 
 type LoginServerConfigs struct {
@@ -108,8 +108,16 @@ func GetRateLimiterConfigs() RateLimiter {
 	}
 }
 
+// GetLogLevel retrieves the log level from environment variables.
+// If the environment variable is not set or is invalid, it falls back to a default level.
 func GetLogLevel() logrus.Level {
-	defaultLevel, _ := logrus.Level.MarshalText(logrus.InfoLevel)
-	level, _ := logrus.ParseLevel(getEnv(EnvLogLevel, string(defaultLevel)))
+	defaultLevel := logrus.InfoLevel
+	levelStr := getEnv(EnvLogLevel, defaultLevel.String())
+	level, err := logrus.ParseLevel(levelStr)
+	if err != nil {
+		// Log the error and use default level
+		log.Printf("Invalid log level '%s', falling back to default level '%s': %v", levelStr, defaultLevel, err)
+		level = defaultLevel
+	}
 	return level
 }

@@ -28,11 +28,16 @@ Write-Colored "Stopping and removing containers..." $Yellow
 # Stop and remove containers
 cd docker
 docker-compose down -v
-docker-compose rm -f
+
 
 Write-Output ""
 Write-Colored "Removing network and volume..." $Yellow
-docker-compose rm -f
+docker system prune -f
+docker rmi login
+docker rmi docker-login
+docker image prune -f
+docker network prune -f
+docker volume prune -f
 cd ..
 
 Write-Output ""

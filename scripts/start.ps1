@@ -40,8 +40,8 @@ docker-compose up -d
 cd ..
 
 # Retrieve IP and port
-$containerIP = docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myaac
-$containerPort = docker port myaac
+$containerIP = docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' login
+$containerPort = docker port login
 $containerPort = $containerPort.Split(":")[1]
 
 # Print completion message and link

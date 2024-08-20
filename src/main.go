@@ -16,13 +16,19 @@ var numberOfServers = 2
 var initDelay = 200
 
 func main() {
-	logger.Init(configs.GetLogLevel())
+
+	logLevel := configs.GetLogLevel()
+	logger.Init(logLevel)
+
 	logger.Info("Welcome to OTBR Login Server")
 
 	var wg sync.WaitGroup
 	wg.Add(numberOfServers)
 
-	gConfigs := configs.GetGlobalConfigs()
+	gConfigs, err := configs.GetGlobalConfigs()
+	if err != nil {
+		logger.Panic(err)
+	}
 
 	go startServer(&wg, gConfigs, grpc_login_server.Initialize(gConfigs))
 	go startServer(&wg, gConfigs, api.Initialize(gConfigs))
@@ -32,7 +38,6 @@ func main() {
 
 	// wait until WaitGroup is done
 	wg.Wait()
-	logger.Info("Good bye...")
 }
 
 func startServer(
@@ -40,8 +45,18 @@ func startServer(
 	gConfigs configs.GlobalConfigs,
 	server server.ServerInterface,
 ) {
+	if server == nil {
+		logger.Error(fmt.Errorf("server is nil"))
+		wg.Done()
+		return
+	}
+
 	logger.Info(fmt.Sprintf("Starting %s server...", server.GetName()))
-	logger.Error(server.Run(gConfigs))
+	err := server.Run(gConfigs)
+	if err != nil {
+		logger.Error(fmt.Errorf("server %s encountered an error: %v", server.GetName(), err))
+	} else {
+		logger.Info(fmt.Sprintf("Server %s stopped gracefully", server.GetName()))
+	}
 	wg.Done()
-	logger.Warn(fmt.Sprintf("Server %s is gone...", server.GetName()))
 }

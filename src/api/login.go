@@ -2,12 +2,14 @@ package api
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/tibia-oce/login-server/src/api/models"
 	"github.com/tibia-oce/login-server/src/database"
 	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
+	"github.com/tibia-oce/login-server/src/logger"
 )
 
 func (_api *Api) login(c *gin.Context) {
@@ -17,9 +19,11 @@ func (_api *Api) login(c *gin.Context) {
 		return
 	}
 
+	logger.Info(fmt.Sprintf("Received payload: %+v", payload))
+
 	switch payload.Type {
 	case "eventschedule":
-		database.HandleEventSchedule(c, _api.CorePath+"xml/events.xml")
+		database.HandleEventSchedule(c, "/xml/events.xml")
 	case "boostedcreature":
 		database.HandleBoostedCreature(c, _api.DB, &_api.BoostedCreatureID, &_api.BoostedBossID)
 	case "login":
