@@ -120,3 +120,18 @@ If you want to sponsor here, join on discord and send a message for one of our a
 ## Partners
 
 [![Supported by OTServ Brasil](https://raw.githubusercontent.com/otbr/otserv-brasil/main/otbr.png)](https://forums.otserv.com.br)
+
+## Installation
+
+    ```
+    go mod tidy
+    ```
+
+    - Windows
+        ```
+        cd .\src\  ; go mod tidy ; go build -o app.exe ; Start-Process -NoNewWindow -FilePath .\app.exe
+        ```
+
+    netstat -ano | findstr :80
+    Stop-Process -Id [PROCESS] -Force
+
