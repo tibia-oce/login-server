@@ -17,8 +17,8 @@ const (
 
 	// Default values
 	DefaultServerIpKey       = "127.0.0.1"
-	DefaultServerLocationKey = "BRA"
-	DefaultServerNameKey     = "Canary"
+	DefaultServerLocationKey = "AUS"
+	DefaultServerNameKey     = "OTServBR-Global"
 	DefaultServerPortKey     = 7172
 	DefaultVocations         = ""
 )

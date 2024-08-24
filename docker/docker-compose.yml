@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.4"
 
 services:
 
@@ -9,7 +9,7 @@ services:
     env_file:
       - '../.env'
     networks:
-      - canary-net
+      - canary
     ports:
       - "3306:3306"
     volumes:
@@ -28,21 +28,31 @@ services:
     restart: unless-stopped
     env_file:
       - '../.env'
+    ports:
+    - 7171:7171
+    - 7172:7172
     networks:
-      - canary-net
+      - canary
     depends_on:
       - database
+    volumes:
+      - 'canary:/data-otservbr-global/world'
 
   login:
     container_name: login
     build:
       context: ../
       dockerfile: docker/Dockerfile
+    # image: opentibiabr/login-server:latest # ghcr.io/tibia-oce/login-server:0.1.0
     restart: unless-stopped
     networks:
-      - canary-net
+      - canary
     depends_on:
       - database
+      - server
+    ports:
+      - 80:80
+      - 9090:9090
     env_file:
       - '../.env'
 
@@ -50,12 +60,12 @@ services:
     container_name: myaac
     image: ghcr.io/tibia-oce/myaac:0.8.19
     ports:
-      - 8001:80
+      - 5000:5000
     restart: unless-stopped
     env_file:
       - '../.env'
     networks:
-      - canary-net
+      - canary
     depends_on:
       - database
 
@@ -63,5 +73,5 @@ volumes:
   canary:
 
 networks:
-  canary-net:
+  canary:
     driver: bridge

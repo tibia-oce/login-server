@@ -4,14 +4,15 @@ import (
 	"bytes"
 	"context"
 	"errors"
-	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
-	"github.com/tibia-oce/login-server/src/logger"
-	"google.golang.org/grpc"
 	"log"
 	"net/http"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/tibia-oce/login-server/src/grpc/login_proto_messages"
+	"github.com/tibia-oce/login-server/src/logger"
+	"google.golang.org/grpc"
 )
 
 var wg sync.WaitGroup
