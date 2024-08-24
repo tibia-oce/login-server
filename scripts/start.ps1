@@ -29,10 +29,12 @@ Write-Colored "Stopping and cleaning any existing containers..." $Yellow
 cd docker
 docker-compose down -v
 docker-compose rm -f
+docker rmi docker-login
 
 Write-Output ""
 Write-Colored "Downloading the most recent versions of containers..." $Yellow
 docker-compose pull
+docker-compose build --no-cache docker-login
 
 Write-Output ""
 Write-Colored "Starting containers..." $Yellow

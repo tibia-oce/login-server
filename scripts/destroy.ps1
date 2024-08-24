@@ -28,6 +28,7 @@ Write-Colored "Stopping and removing containers..." $Yellow
 # Stop and remove containers
 cd docker
 docker-compose down -v
+docker rm docker-login
 docker-compose rm -f
 
 Write-Output ""

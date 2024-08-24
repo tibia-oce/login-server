@@ -17,7 +17,7 @@ const (
 	EnvLogLevel            = "ENV_LOG_LEVEL"
 
 	// Default values
-	DefaultLoginIpKey          = "127.0.0.1"
+	DefaultLoginIpKey          = "0.0.0.0"
 	DefaultLoginHttpPortKey    = 80
 	DefaultLoginGrpcPortKey    = 9090
 	DefaultRateLimiterBurstKey = 5
